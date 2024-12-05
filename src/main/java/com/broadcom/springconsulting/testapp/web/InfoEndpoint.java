@@ -16,11 +16,11 @@ public class InfoEndpoint {
     }
 
     @GetMapping( "/time" )
-    public String time() {
+    public TimeResponse time() {
 
         var ts = this.timeService.getCurrentTime();
 
-        return ts.toString();
+        return new TimeResponse( ts.toString() );
     }
 
 }
