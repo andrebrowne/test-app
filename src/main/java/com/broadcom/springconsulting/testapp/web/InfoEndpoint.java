@@ -1,11 +1,11 @@
 package com.broadcom.springconsulting.testapp.web;
 
+import com.broadcom.springconsulting.endpoint.EndpointAdapter;
 import com.broadcom.springconsulting.testapp.service.TimeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@EndpointAdapter
 @RequestMapping( "/info" )
 public class InfoEndpoint {
 

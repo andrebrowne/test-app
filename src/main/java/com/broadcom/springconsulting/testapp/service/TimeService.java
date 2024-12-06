@@ -2,12 +2,12 @@ package com.broadcom.springconsulting.testapp.service;
 
 import com.broadcom.springconsulting.testapp.persistence.TimeHistory;
 import com.broadcom.springconsulting.testapp.persistence.TimeHistoryRepository;
-import org.springframework.stereotype.Component;
+import com.broadcom.springconsulting.usecase.UseCase;
 
 import java.sql.Timestamp;
 import java.time.Instant;
 
-@Component
+@UseCase
 public class TimeService {
 
     private final TimeGenerator timeGenerator;
