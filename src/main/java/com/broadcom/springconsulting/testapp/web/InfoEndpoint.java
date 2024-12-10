@@ -20,7 +20,7 @@ public class InfoEndpoint {
 
         var ts = this.timeService.getCurrentTime();
 
-        return new TimeResponse( ts.toString() );
+        return new TimeResponse( ts.getCurrentTime().toString() );
     }
 
 }

@@ -1,7 +1,7 @@
 package com.broadcom.springconsulting.testapp.service;
 
 import com.broadcom.springconsulting.testapp.persistence.TimeHistory;
-import com.broadcom.springconsulting.testapp.persistence.TimeHistoryRepository;
+import com.broadcom.springconsulting.testapp.persistence.TimeHistoryPersistenceAdapter;
 import com.broadcom.springconsulting.usecase.UseCase;
 
 import java.sql.Timestamp;
@@ -11,22 +11,22 @@ import java.time.Instant;
 public class TimeService {
 
     private final TimeGenerator timeGenerator;
-    private final TimeHistoryRepository repository;
+    private final TimeHistoryPersistenceAdapter persistenceAdapter;
 
-    public TimeService( final TimeGenerator timeGenerator, final TimeHistoryRepository repository ) {
+    public TimeService( final TimeGenerator timeGenerator, final TimeHistoryPersistenceAdapter persistenceAdapter ) {
 
         this.timeGenerator = timeGenerator;
-        this.repository = repository;
+        this.persistenceAdapter = persistenceAdapter;
 
     }
 
-    public Instant getCurrentTime() {
+    public CurrentTimeDomainModel getCurrentTime() {
 
         Instant now = this.timeGenerator.generate();
 
-        TimeHistory created = this.repository.save( new TimeHistory(null, Timestamp.from( now ) ) );
+        TimeHistory created = this.persistenceAdapter.save( new TimeHistory(null, Timestamp.from( now ) ) );
 
-        return created.getTimestamp().toInstant();
+        return new CurrentTimeDomainModel( created.getId(), created.getTimestamp().toInstant() );
     }
 
 }

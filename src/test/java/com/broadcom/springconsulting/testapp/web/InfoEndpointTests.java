@@ -1,5 +1,6 @@
 package com.broadcom.springconsulting.testapp.web;
 
+import com.broadcom.springconsulting.testapp.service.CurrentTimeDomainModel;
 import com.broadcom.springconsulting.testapp.service.TimeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class InfoEndpointTests {
     void testTime() throws Exception {
 
         Instant fakeInstant = Instant.now();
-        when( this.mockTimeService.getCurrentTime() ).thenReturn( fakeInstant );
+        when( this.mockTimeService.getCurrentTime() ).thenReturn( new CurrentTimeDomainModel( -1L, fakeInstant ) );
 
         this.mockMvc.perform( get( "/info/time" ) )
                 .andExpect( status().isOk() )

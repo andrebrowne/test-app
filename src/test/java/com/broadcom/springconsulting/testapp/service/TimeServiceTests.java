@@ -1,7 +1,7 @@
 package com.broadcom.springconsulting.testapp.service;
 
 import com.broadcom.springconsulting.testapp.persistence.TimeHistory;
-import com.broadcom.springconsulting.testapp.persistence.TimeHistoryRepository;
+import com.broadcom.springconsulting.testapp.persistence.TimeHistoryPersistenceAdapter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -25,7 +25,7 @@ public class TimeServiceTests {
     private TimeService subject;
 
     @SpyBean
-    private TimeHistoryRepository timeHistoryRepository;
+    private TimeHistoryPersistenceAdapter timeHistoryPersistenceAdapter;
 
     @MockBean
     private TimeGenerator mockTimeGenerator;
@@ -39,8 +39,8 @@ public class TimeServiceTests {
 
 
         verify( this.mockTimeGenerator ).generate();
-        verify( this.timeHistoryRepository, times( 1 ) ).save( new TimeHistory( 1L, Timestamp.from( fakeInstant ) ) );
-        verifyNoMoreInteractions( this.mockTimeGenerator, this.timeHistoryRepository );
+        verify( this.timeHistoryPersistenceAdapter, times( 1 ) ).save( new TimeHistory( 1L, Timestamp.from( fakeInstant ) ) );
+        verifyNoMoreInteractions( this.mockTimeGenerator, this.timeHistoryPersistenceAdapter );
 
     }
 
