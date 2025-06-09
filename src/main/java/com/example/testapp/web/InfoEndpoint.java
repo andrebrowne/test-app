@@ -1,7 +1,7 @@
-package com.broadcom.springconsulting.testapp.web;
+package com.example.testapp.web;
 
-import com.broadcom.springconsulting.endpoint.EndpointAdapter;
-import com.broadcom.springconsulting.testapp.service.TimeService;
+import com.example.endpoint.EndpointAdapter;
+import com.example.testapp.service.TimeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

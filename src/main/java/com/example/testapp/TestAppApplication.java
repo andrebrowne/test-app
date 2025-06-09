@@ -1,4 +1,4 @@
-package com.broadcom.springconsulting.testapp;
+package com.example.testapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

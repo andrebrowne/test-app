@@ -1,6 +1,6 @@
-package com.broadcom.springconsulting.testapp.persistence;
+package com.example.testapp.persistence;
 
-import com.broadcom.springconsulting.persistence.PersistenceAdapter;
+import com.example.persistence.PersistenceAdapter;
 
 @PersistenceAdapter
 public class TimeHistoryPersistenceAdapter {

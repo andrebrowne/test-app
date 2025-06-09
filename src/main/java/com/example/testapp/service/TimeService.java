@@ -1,8 +1,8 @@
-package com.broadcom.springconsulting.testapp.service;
+package com.example.testapp.service;
 
-import com.broadcom.springconsulting.testapp.persistence.TimeHistory;
-import com.broadcom.springconsulting.testapp.persistence.TimeHistoryPersistenceAdapter;
-import com.broadcom.springconsulting.usecase.UseCase;
+import com.example.testapp.persistence.TimeHistory;
+import com.example.testapp.persistence.TimeHistoryPersistenceAdapter;
+import com.example.usecase.UseCase;
 
 import java.sql.Timestamp;
 import java.time.Instant;

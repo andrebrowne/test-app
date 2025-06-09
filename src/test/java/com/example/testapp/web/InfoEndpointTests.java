@@ -1,7 +1,7 @@
-package com.broadcom.springconsulting.testapp.web;
+package com.example.testapp.web;
 
-import com.broadcom.springconsulting.testapp.service.CurrentTimeDomainModel;
-import com.broadcom.springconsulting.testapp.service.TimeService;
+import com.example.testapp.service.CurrentTimeDomainModel;
+import com.example.testapp.service.TimeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

@@ -1,4 +1,4 @@
-package com.broadcom.springconsulting.testapp.web;
+package com.example.testapp.web;
 
 public class TimeResponse {
 

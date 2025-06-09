@@ -1,4 +1,4 @@
-package com.broadcom.springconsulting.testapp.service;
+package com.example.testapp.service;
 
 import org.springframework.stereotype.Component;
 

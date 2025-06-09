@@ -1,4 +1,4 @@
-package com.broadcom.springconsulting.testapp.persistence;
+package com.example.testapp.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 

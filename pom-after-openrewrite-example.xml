@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.13</version>
+		<version>3.0.13</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -52,13 +52,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<!-- Custom dependencies -->
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>custom-annotations</artifactId>
-			<version>${custom-annotations.version}</version>
 		</dependency>
 
 		<!-- Database dependencies -->

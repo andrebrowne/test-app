@@ -1,0 +1,15 @@
+#!/bin/bash
+set -eu
+cat << EOF > rewrite.yml
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.RemoveCustomAnnotations
+recipeList:
+  - com.example.java.replaceCustomAnnotations.ReplaceEndpointAdapterRecipe
+  - com.example.java.replaceCustomAnnotations.ReplacePersistenceAdapterRecipe
+  - com.example.java.replaceCustomAnnotations.ReplaceUseCaseRecipe
+  - org.openrewrite.maven.RemoveDependency:
+      groupId: com.example
+      artifactId: custom-annotations
+      scope: compile
+EOF
