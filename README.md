@@ -35,15 +35,15 @@ Execute the command:
 #### Convert POJOs to Java records
 
 | **_NOTE_** | Update the following maven command lines with the correct version of the `custom-recipes` library (e.g. `1.0.0-SNAPSHOT`, `1.0.0`, `1.0.1`, etc.) |
-|---|---|
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 
 Execute the command:
 
 ```bash
 ./mvnw -U org.openrewrite.maven:rewrite-maven-plugin:run \
   -Drewrite.configLocation=config-files/convert-pojo-to-record.yml \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.ConvertPojoToRecordRecipe \
+  -Drewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -Drewrite.activeRecipes=com.broadcom.springconsulting.ConvertPojoToRecordRecipe \
   -Drewrite.exportDatatables=true
 ```
 
@@ -54,8 +54,8 @@ Execute the command:
 ```bash
 ./mvnw -U org.openrewrite.maven:rewrite-maven-plugin:run \
   -Drewrite.configLocation=config-files/replace-custom-annotations-and-remove-dependency.yml \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.RemoveCustomAnnotations 
+  -Drewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -Drewrite.activeRecipes=com.broadcom.springconsulting.RemoveCustomAnnotations 
   -Drewrite.exportDatatables=true
 ```
 
@@ -76,18 +76,18 @@ Create `rewrite.yml` in project root wth the following contents:
 ```yaml
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.example.ConvertPojoToRecordRecipe
+name: com.broadcom.springconsulting.ConvertPojoToRecordRecipe
 recipeList:
-  - com.example.java.convertPojoToRecord.ConvertPojoToRecordRecipe:
-      fullyQualifiedClassName: com.example.testapp.web.TimeResponse
+  - com.broadcom.springconsulting.java.convertPojoToRecord.ConvertPojoToRecordRecipe:
+      fullyQualifiedClassName: com.broadcom.springconsulting.testapp.web.TimeResponse
 ```
 
 then execute the command:
 
 ```bash
 ./mvnw -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.ConvertPojoToRecordRecipe \
+  -Drewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -Drewrite.activeRecipes=com.broadcom.springconsulting.ConvertPojoToRecordRecipe \
   -Drewrite.exportDatatables=true
 ```
 
@@ -98,13 +98,13 @@ Create `rewrite.yml` in project root wth the following contents:
 ```yaml
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.example.RemoveCustomAnnotations
+name: com.broadcom.springconsulting.RemoveCustomAnnotations
 recipeList:
-  - com.example.java.replaceCustomAnnotations.ReplaceEndpointAdapterRecipe
-  - com.example.java.replaceCustomAnnotations.ReplacePersistenceAdapterRecipe
-  - com.example.java.replaceCustomAnnotations.ReplaceUseCaseRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplaceEndpointAdapterRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplacePersistenceAdapterRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplaceUseCaseRecipe
   - org.openrewrite.maven.RemoveDependency:
-      groupId: com.example
+      groupId: com.broadcom.springconsulting
       artifactId: custom-annotations
       scope: compile
 ```
@@ -113,7 +113,7 @@ then execute the command:
 
 ```bash
 ./mvnw -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.RemoveCustomAnnotations \
+  -Drewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -Drewrite.activeRecipes=com.broadcom.springconsulting.RemoveCustomAnnotations \
   -Drewrite.exportDatatables=true
 ```
