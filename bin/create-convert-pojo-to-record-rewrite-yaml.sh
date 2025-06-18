@@ -3,8 +3,8 @@ set -eu
 cat << EOF > rewrite.yml
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.example.ConvertPojoToRecordRecipe
+name: com.broadcom.springconsulting.ConvertPojoToRecordRecipe
 recipeList:
-  - com.example.java.convertPojoToRecord.ConvertPojoToRecordRecipe:
-      fullyQualifiedClassName: com.example.testapp.web.TimeResponse
+  - com.broadcom.springconsulting.java.convertPojoToRecord.ConvertPojoToRecordRecipe:
+      fullyQualifiedClassName: com.broadcom.springconsulting.testapp.web.TimeResponse
 EOF

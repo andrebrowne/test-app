@@ -3,13 +3,13 @@ set -eu
 cat << EOF > rewrite.yml
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.example.RemoveCustomAnnotations
+name: com.broadcom.springconsulting.RemoveCustomAnnotations
 recipeList:
-  - com.example.java.replaceCustomAnnotations.ReplaceEndpointAdapterRecipe
-  - com.example.java.replaceCustomAnnotations.ReplacePersistenceAdapterRecipe
-  - com.example.java.replaceCustomAnnotations.ReplaceUseCaseRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplaceEndpointAdapterRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplacePersistenceAdapterRecipe
+  - com.broadcom.springconsulting.java.replaceCustomAnnotations.ReplaceUseCaseRecipe
   - org.openrewrite.maven.RemoveDependency:
-      groupId: com.example
+      groupId: com.broadcom.springconsulting
       artifactId: custom-annotations
       scope: compile
 EOF

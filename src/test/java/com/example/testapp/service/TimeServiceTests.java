@@ -1,13 +1,14 @@
 package com.example.testapp.service;
 
-import com.example.testapp.persistence.TimeHistory;
-import com.example.testapp.persistence.TimeHistoryPersistenceAdapter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.Import;
+
+import com.example.testapp.persistence.TimeHistory;
+import com.example.testapp.persistence.TimeHistoryPersistenceAdapter;
 
 import java.sql.Timestamp;
 import java.time.Instant;

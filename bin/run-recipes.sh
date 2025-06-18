@@ -52,29 +52,38 @@ check_and_build_library() {
     fi
 }
 
-check_and_build_library "com.example" "custom-annotations" "1.0.1" "https://github.com/andrebrowne/custom-annotations.git"
-check_and_build_library "com.example" "custom-recipes" "1.0.2" "https://github.com/andrebrowne/custom-recipes.git"
+check_and_build_library "com.broadcom.springconsulting" "custom-annotations" "1.0.1" "https://github.com/andrebrowne/custom-annotations.git"
+check_and_build_library "com.broadcom.springconsulting" "custom-recipes" "1.0.2" "https://github.com/andrebrowne/custom-recipes.git"
 ./mvnw clean install -DskipTests --quiet
 echo "Checking for local recipes"
 echo "Running UpgradeSpringBoot_3_0 recipe..."
-./mvnw -DskipTests -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.exportDatatables=true \
-  -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-spring:RELEASE \
-  -Drewrite.activeRecipes=org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_0
+./mvnw \
+  -U org.openrewrite.maven:rewrite-maven-plugin:run \
+  -D skipTests \
+  -D rewrite.exportDatatables=true \
+  -D rewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-spring:RELEASE \
+  -D rewrite.activeRecipes=org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_0
+
 echo "Running ConvertPojoToRecordRecipe recipe..."
-./mvnw -DskipTests -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.exportDatatables=true \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.ConvertPojoToRecordRecipe \
-  -Drewrite.configLocation=config-files/convert-pojo-to-record.yml
+./mvnw \
+  -U org.openrewrite.maven:rewrite-maven-plugin:run \
+  -D skipTests \
+  -D rewrite.exportDatatables=true \
+  -D rewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -D rewrite.activeRecipes=com.broadcom.springconsulting.ConvertPojoToRecordRecipe \
+  -D rewrite.configLocation=config-files/convert-pojo-to-record.yml
+
 echo "Running RemoveCustomAnnotations recipe..."
-./mvnw -DskipTests -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.exportDatatables=true \
-  -Drewrite.recipeArtifactCoordinates=com.example:custom-recipes:1.0.2 \
-  -Drewrite.activeRecipes=com.example.RemoveCustomAnnotations \
-  -Drewrite.configLocation=config-files/replace-custom-annotations-and-remove-dependency.yml
+./mvnw \
+  -U org.openrewrite.maven:rewrite-maven-plugin:run \
+  -D skipTests \
+  -D rewrite.exportDatatables=true \
+  -D rewrite.recipeArtifactCoordinates=com.broadcom.springconsulting:custom-recipes:1.0.2 \
+  -D rewrite.activeRecipes=com.broadcom.springconsulting.RemoveCustomAnnotations \
+  -D rewrite.configLocation=config-files/replace-custom-annotations-and-remove-dependency.yml
+
 echo "Validating changes"
-./mvnw clean install --quiet
-git add .
+./mvnw clean test --quiet
 git --no-pager diff
+git add .
 git status
